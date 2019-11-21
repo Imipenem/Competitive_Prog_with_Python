@@ -10,8 +10,7 @@ def reverse_list(head: ListNode) -> ListNode:
     l, m, r = None, head, head.next
 
     while r is not None:
-        m.next = l
-        l, m, r = m, r, r.next
+        m.next,l, m, r = l,m, r, r.next
 
     m.next = l
     return m
