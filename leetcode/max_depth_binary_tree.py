@@ -8,8 +8,12 @@ class TreeNode:
 
 def maxDepth(root: TreeNode) -> int:
     if not root: return 0
-
     else: return max(1+maxDepth(root.left), 1+maxDepth(root.right))
+
+
+#TODO: Implement iterative way for a O(1) space solution
+def maxDepthII(root: TreeNode) -> int:
+    print("PLACEHODLER")
 
 
 if __name__ == "__main__":
