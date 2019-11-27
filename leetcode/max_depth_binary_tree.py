@@ -6,9 +6,19 @@ class TreeNode:
         self.right = None
 
 
-def maxDepth(self, root: TreeNode) -> int:
-    print("PLACEHODLER")
+def maxDepth(root: TreeNode) -> int:
+    if not root: return 0
+
+    else: return max(1+maxDepth(root.left), 1+maxDepth(root.right))
 
 
 if __name__ == "__main__":
-    print()
+
+    n1 = TreeNode(1)
+    n2 = TreeNode(2)
+    n3 = TreeNode(3)
+
+    n1.left = n2
+    n2.left = n3
+
+    print(maxDepth(n1))
