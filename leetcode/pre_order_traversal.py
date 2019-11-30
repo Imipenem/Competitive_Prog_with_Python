@@ -33,16 +33,18 @@ def preorderTraversalIterative(root: TreeNode) -> [int]:
     current = root
 
     while current:
-        res.append(current)
+        res.append(current.val)
 
         if current.left:
             if current.right: stack.append(current.right)
-            res.append(current.left)
             current = current.left
         elif current.right:
             current = current.right
         else:
-            if stack: current = stack.pop()
+            if stack:
+                current = stack.pop()
+            else:
+                current = None
     return res
 
 #beats 90% 28ms, pushes every node onto the stack
