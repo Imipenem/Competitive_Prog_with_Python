@@ -6,14 +6,6 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def searchBST(root: TreeNode, val: int):
-    current = root
-    while current:
-        if current.val == val: return current
-        elif current.val < val: current = current.right
-        else: current = current.left
-    return None
-
 
 def deleteNode(root: TreeNode, key: int) -> TreeNode:
     if not root: return None
@@ -49,19 +41,39 @@ def deleteNode(root: TreeNode, key: int) -> TreeNode:
         if not prev:
             return to_del.left  # delete root node with only a left subtree
         else:
-            prev.left = to_del.left
+            if prev.right is to_del:
+                prev.right = to_del.left
+            else:
+                prev.left = to_del.left
             return root
 
     elif not to_del.left:
         if not prev:
             return to_del.right  # delete root node with only a right subtree
         else:
-            prev.right = to_del.right
+            if prev.left is to_del:
+                prev.left = to_del.right
+            else:
+                prev.right = to_del.right
             return root
 
     # Our Node has two childs: Case 3
 
     else:
-        print()
+        previ = to_del
+        succ = to_del.right
+        curr = succ
 
+        while curr.left:
+            previ = succ
+            curr = curr.left
+            succ = curr
 
+        to_del.val = succ.val
+
+        if previ.right is succ:
+            previ.right = succ.right
+        else:
+            previ.left = succ.right
+
+        return root
