@@ -77,3 +77,92 @@ def deleteNode(root: TreeNode, key: int) -> TreeNode:
             previ.left = succ.right
 
         return root
+
+#Recursive Approach
+def deleteNodeII(root: TreeNode, key: int) -> TreeNode:
+
+    if not root: return root
+
+    elif key < root.val:
+        root.left = deleteNodeII(root.left, key)
+
+    elif key > root.val:
+        root.right = deleteNodeII(root.right, key)
+
+    else:
+        if not root.left:
+            temp = root.right
+            root = None
+            return temp
+
+        elif not root.right:
+            temp = root.left
+            root = None
+            return temp
+
+        else:
+            node = inorderSucc(root.right)
+            root.val = node.val
+            root.right = deleteNodeII(root.right,node.val)
+    return root
+
+
+def inorderSucc(root:TreeNode):
+    current = root
+
+    while current.left:
+        current = current.left
+    return current
+
+#Recursive Approach
+def delete(root, delete):
+
+    if not root: return root
+
+    elif delete.key < root.val:
+        root.left = delete(root.left, delete)
+
+    elif delete.key > root.val:
+        root.right = delete(root.right, delete)
+
+    else:
+        if not root.left:
+            temp = root.right
+            root = None
+            return temp
+
+        elif not root.right:
+            temp = root.left
+            root = None
+            return temp
+
+        else:
+            node = inorderSucc(root.right)
+            root.val = node.val
+            root.right = delete(root.right,node.val)
+    return root
+
+
+def inorderSucc(root:TreeNode):
+    current = root
+
+    while current.left:
+        current = current.left
+    return current
+
+if __name__=="__main__":
+    root = TreeNode(2)
+    n1 = TreeNode(1)
+    n2 = TreeNode(3)
+    n3 = TreeNode(99)
+
+    root.left = n1
+    root.right = n2
+
+    n2.right = n3
+
+    print(deleteNodeII(root,3).val)
+    print(deleteNodeII(root, 3).left.val)
+    print(deleteNodeII(root, 3).right.val)
+
+    
