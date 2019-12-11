@@ -29,12 +29,31 @@ def postorderTraversalIterative(root: TreeNode) -> [int]:
 
     return s2
 
-if __name__ == "__main__":
-    n1 = TreeNode(1)
-    n2 = TreeNode(2)
-    n3 = TreeNode(3)
+if __name__=="__main__":
+    n1 = TreeNode(47)
+    n2 = TreeNode(23)
+    n3 = TreeNode(80)
+    n4 = TreeNode(21)
+    n5 = TreeNode(30)
+    n6 = TreeNode(64)
+    n7 = TreeNode(85)
+    n8 = TreeNode(15)
+    n9 = TreeNode(22)
+    n10 = TreeNode(99)
 
-    n1.right = n2
-    n2.left = n3
+    n1.left = n2
+    n1.right = n3
 
-    print(postorderTraversalIterative(n1))
+    n2.left = n4
+    n2.right = n5
+
+    n4.left = n8
+    n4.right = n9
+
+    n3.left = n6
+    n3.right = n7
+
+    n7.right = n10
+
+    for e in postorderTraversal(n1):
+        print(e)
