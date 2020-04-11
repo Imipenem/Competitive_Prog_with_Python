@@ -13,7 +13,7 @@ def count_pattern(genome: str, pattern: str) -> int:
     """
     count = 0
 
-    for i in range(0, len(genome) - len(pattern)):
+    for i in range(0, len(genome) + 1 - len(pattern)):
         if genome[i: i + len(pattern)] == pattern:
             count += 1
     return count
@@ -38,7 +38,7 @@ def count_pattern_with_counter(genome: str, pattern: str) -> int:
 
 
 if __name__ == '__main__':
-    print()
+    print(count_pattern("GCGCG","GCG"))
 # timeit statement
 # stmt were calls to above three functions
 # print(timeit.timeit(setup="from __main__ import count_pattern",stmt=mycode, number=10000))
