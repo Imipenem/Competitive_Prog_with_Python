@@ -29,4 +29,4 @@ def NumberToPattern(index, k) -> str:
 
 
 if __name__ == '__main__':
-    print(NumberToPattern(5761,10))
+    print(NumberToPattern(5437, 8))

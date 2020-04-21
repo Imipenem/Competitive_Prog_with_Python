@@ -38,7 +38,7 @@ def count_pattern_with_counter(genome: str, pattern: str) -> int:
 
 
 if __name__ == '__main__':
-    print(count_pattern("GCGCG","GCG"))
+    print(count_pattern("ACTGTACGATGATGTGTGTCAAAG", "TGT"))
 # timeit statement
 # stmt were calls to above three functions
 # print(timeit.timeit(setup="from __main__ import count_pattern",stmt=mycode, number=10000))
